@@ -1,8 +1,8 @@
-# k3OS Raspberry PI Cluster
+# Raspberry PI Cluster
 
 Notes on creating a k3OS based raspberry pi cluster.
 
-## Initial steps collecting MAC addresses for later reference
+## Standard raspberry pi imaging (collecting MAC addresses for later reference)
 
 List and unmount the target sdcard block devices:
 
