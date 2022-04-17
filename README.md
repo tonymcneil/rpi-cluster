@@ -58,4 +58,26 @@ Power up the pi and wait a few minutes to get the ip address and the MAC address
 
     sudo nmap -sn 192.168.1.0/24 | egrep "(B8:27:EB|E4:5F:01)"
 
+## Prep for automated k3OS imaging
+
+Roughly following this guide: https://www.chriswoolum.dev/k3s-cluster-on-raspberry-pi
+
+Utilising a fork of this repo (forked to add improvements): https://github.com/sgielen/picl-k3os-image-generator
+
+### Subtree management
+
+Following git subtree notes here: https://www.atlassian.com/git/tutorials/git-subtree
+
+    # add remote for easier tracking
+    git remote add -f picl-k3os-image-generator git@github.com:tonymcneil/picl-k3os-image-generator.git
+    
+    # create a subtree subfolder structure within this repo:
+    git subtree add --prefix subtrees/picl-k3os-image-generator picl-k3os-image-generator master --squash
+
+    # updating this repos subtree from the tracked remote
+    git fetch picl-k3os-image-generator master
+    git subtree pull --prefix subtrees/picl-k3os-image-generator picl-k3os-image-generator master --squash
+
+    # pushing changes to the subtree fork (for eventual PR against the source repo):
+    git subtree push --prefix=subtrees/picl-k3os-image-generator picl-k3os-image-generator master
 
